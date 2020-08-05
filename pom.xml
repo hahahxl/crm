@@ -143,7 +143,7 @@
           <!--    Default: localhost  -->
           <port>8089</port>
           <!--  启动端口 Default:8080  -->
-          <path>/travel</path>
+          <path>/crm</path>
           <!--  访问应用路径  Default: /${project.artifactId} -->
           <uriEncoding>UTF-8</uriEncoding>
           <!--  uri编码 Default: ISO-8859-1  -->

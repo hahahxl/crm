@@ -7,24 +7,24 @@
 
 
     <!--springmvc配置文件， 声明controller和其它web相关的对象-->
-    <context:component-scan base-package="com.bytedance.controller"/>
+    <context:component-scan base-package="com.bytedance.crm.setting.controller"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/><!--视图解析器-->
     </bean>
 
-    <mvc:annotation-driven/>
-    <context:component-scan base-package="com.bytedance.handler"/>
-    <!--
+    <mvc:annotation-driven/> <!--
       1. 响应ajax请求，返回json
       2. 解决静态资源访问问题。
     -->
-    <mvc:interceptors>
+
+    <!--拦截器-->
+   <!-- <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
             <mvc:exclude-mapping path="/login.do"/>
             <bean class="com.bytedance.handler.LoginHandler">
             </bean>
         </mvc:interceptor>
-    </mvc:interceptors>
+    </mvc:interceptors>-->
 </beans>
