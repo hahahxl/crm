@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="crm@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.2">
+    <root id="1"/>
+    <schema id="2" parent="1" name="crm">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="movie"/>
+    <schema id="5" parent="1" name="mysql"/>
+    <schema id="6" parent="1" name="performance_schema"/>
+    <schema id="7" parent="1" name="student"/>
+    <schema id="8" parent="1" name="sys"/>
+    <schema id="9" parent="1" name="training"/>
+    <table id="10" parent="2" name="tbl_user"/>
+    <column id="11" parent="10" name="id">
+      <Position>1</Position>
+      <Comment>uuid&#xd;
+            </Comment>
+      <DataType>char(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="12" parent="10" name="loginAct">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="13" parent="10" name="name">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="14" parent="10" name="loginPwd">
+      <Position>4</Position>
+      <Comment>密码不能采用明文存储，采用密文，MD5加密之后的数据</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="15" parent="10" name="email">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="16" parent="10" name="expireTime">
+      <Position>6</Position>
+      <Comment>失效时间为空的时候表示永不失效，失效时间为2018-10-10 10:10:10，则表示在该时间之前该账户可用。</Comment>
+      <DataType>char(19)|0</DataType>
+    </column>
+    <column id="17" parent="10" name="lockState">
+      <Position>7</Position>
+      <Comment>锁定状态为空时表示启用，为0时表示锁定，为1时表示启用。</Comment>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="18" parent="10" name="deptno">
+      <Position>8</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="19" parent="10" name="allowIps">
+      <Position>9</Position>
+      <Comment>允许访问的IP为空时表示IP地址永不受限，允许访问的IP可以是一个，也可以是多个，当多个IP地址的时候，采用半角逗号分隔。允许IP是192.168.100.2，表示该用户只能在IP地址为192.168.100.2的机器上使用。</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="20" parent="10" name="createTime">
+      <Position>10</Position>
+      <DataType>char(19)|0</DataType>
+    </column>
+    <column id="21" parent="10" name="createBy">
+      <Position>11</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="22" parent="10" name="editTime">
+      <Position>12</Position>
+      <DataType>char(19)|0</DataType>
+    </column>
+    <column id="23" parent="10" name="editBy">
+      <Position>13</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="24" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

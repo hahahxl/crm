@@ -141,7 +141,7 @@
         <configuration>
           <hostName>localhost</hostName>
           <!--    Default: localhost  -->
-          <port>8089</port>
+          <port>8080</port>
           <!--  启动端口 Default:8080  -->
           <path>/crm</path>
           <!--  访问应用路径  Default: /${project.artifactId} -->

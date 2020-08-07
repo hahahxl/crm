@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,7 +106,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="window.location.href='../login.html';">更新</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="window.location.href='../login.jsp';">更新</button>
 				</div>
 			</div>
 		</div>
@@ -125,7 +127,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="window.location.href='../login.html';">确定</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="window.location.href='../login.jsp';">确定</button>
 				</div>
 			</div>
 		</div>
@@ -138,7 +140,7 @@
 			<ul>
 				<li class="dropdown user-dropdown">
 					<a href="javascript:void(0)" style="text-decoration: none; color: white;" class="dropdown-toggle" data-toggle="dropdown">
-						<span class="glyphicon glyphicon-user"></span> zhangsan <span class="caret"></span>
+						<span class="glyphicon glyphicon-user"></span> ${user.name} <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
 						<li><a href="../settings/index.html"><span class="glyphicon glyphicon-wrench"></span> 系统设置</a></li>
