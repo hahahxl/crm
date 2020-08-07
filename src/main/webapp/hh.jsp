@@ -11,7 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-<h1><a href="${pageContext.request.contextPath}/user/setting/login.do">点我呀</a></h1>
-
+ffffffffffffffffffffffffffffffffffffff
 </body>
 </html>

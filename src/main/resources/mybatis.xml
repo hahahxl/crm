@@ -12,5 +12,6 @@
     <!-- sql mapper(sql映射文件)的位置-->
     <mappers>
         <package name="com.bytedance.crm.setting.dao"/>
+        <package name="com.bytedance.crm.workbench.dao"/>
     </mappers>
 </configuration>

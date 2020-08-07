@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -101,9 +103,9 @@
                             <label for="edit-marketActivityOwner" class="col-sm-2 control-label">所有者<span style="font-size: 15px; color: red;">*</span></label>
                             <div class="col-sm-10" style="width: 300px;">
                                 <select class="form-control" id="edit-marketActivityOwner">
-                                    <option>zhangsan</option>
-                                    <option>lisi</option>
-                                    <option>wangwu</option>
+									<option>zhangsan</option>
+									<option>lisi</option>
+									<option>wangwu</option>
                                 </select>
                             </div>
                             <label for="edit-marketActivityName" class="col-sm-2 control-label">名称<span style="font-size: 15px; color: red;">*</span></label>

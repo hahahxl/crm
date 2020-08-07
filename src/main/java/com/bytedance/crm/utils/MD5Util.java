@@ -1,4 +1,4 @@
-package com.bytedance.crm.setting.utils;
+package com.bytedance.crm.utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

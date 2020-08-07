@@ -3,7 +3,7 @@ package com.bytedance.crm.setting.controller;
 import com.bytedance.crm.setting.domain.User;
 import com.bytedance.crm.setting.loginMsgVo.LoginInfo;
 import com.bytedance.crm.setting.servive.impl.UserService;
-import com.bytedance.crm.setting.utils.MD5Util;
+import com.bytedance.crm.utils.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -3,7 +3,7 @@ package com.bytedance.crm.setting.servive.impl;
 import com.bytedance.crm.setting.dao.UserDao;
 import com.bytedance.crm.setting.domain.User;
 import com.bytedance.crm.setting.exception.UserLoginException;
-import com.bytedance.crm.setting.utils.DateTimeUtil;
+import com.bytedance.crm.utils.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
