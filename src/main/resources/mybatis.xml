@@ -9,6 +9,14 @@
         <setting name="logImpl" value="STDOUT_LOGGING"/>
     </settings>
 
+    <plugins>
+        <!-- com.github.pagehelper为PageHelper类所在包名 -->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!-- 配置相关参数，通常情况使用默认值即可，不需要配置-->
+            <!--配置指定当前使用的数据库-->
+            <property name="helperDialect" value="mysql"/>
+        </plugin>
+    </plugins>
     <!-- sql mapper(sql映射文件)的位置-->
     <mappers>
         <package name="com.bytedance.crm.setting.dao"/>

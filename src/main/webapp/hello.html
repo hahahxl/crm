@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="jquery/pagination/common/jquery.min.js"></script>
+
+    <script src="jquery/pagination/jquery.pagination.js"></script>
+    <script>
+        $(function () {
+            $("#ff").pagination({
+                pageCount: 50,
+                jump: true,
+                coping: true,
+                homePage: '首页',
+                endPage: '末页',
+                prevContent: '上页',
+                nextContent: '下页',
+                callback: function (api) {
+                    console.log(api.getCurrent())
+                }
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+<div id="ff"></div>
+</body>
+</html>

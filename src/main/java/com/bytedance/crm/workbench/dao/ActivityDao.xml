@@ -4,6 +4,54 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bytedance.crm.workbench.dao.ActivityDao">
     <select id="getUserList" resultType="com.bytedance.crm.setting.domain.User">
-    select * from tbl_user;
+    select * from tbl_user
+    </select>
+
+    <insert id="save">
+    insert into tbl_activity (id, owner, name, startDate, endDate, cost, description, createTime, createBy) values (#{id},#{owner},#{name},#{startDate},#{endDate},#{cost},#{description},#{createTime},#{createBy});
+    </insert>
+
+    <select id="getPageList" resultType="com.bytedance.crm.workbench.domain.Activity">
+        select
+        a.name,u.name as owner,a.startDate,a.endDate
+        from tbl_activity a JOIN tbl_user u
+        on a.owner = u.id
+        <where>
+
+            <if test="name[0]!=null and name[0]!=''">
+                a.name like '%' #{name[0]} '%'
+            </if>
+            <if test="owner[0]!=null and owner[0]!=''">
+                and u.name like '%' #{owner[0]} '%'
+            </if>
+            <if test="startDate[0]!=null and startDate[0]!=''">
+                and a.startDate &gt; #{startDate[0]}
+            </if>
+            <if test="endDate[0]!=null and endDate[0]!=''">
+                and a.endDate &lt; #{endDate[0]}
+            </if>
+        </where>
+        order by a.createTime desc
+    </select>
+
+    <select id="getToal" resultType="int">
+        select count(*) from tbl_activity a join tbl_user u
+        on a.owner = u.id
+        <where>
+
+            <if test="name[0]!=null and name[0]!=''">
+                a.name like '%' #{name[0]} '%'
+            </if>
+            <if test="owner[0]!=null and owner[0]!=''">
+                and u.name like '%' #{owner[0]} '%'
+            </if>
+            <if test="startDate[0]!=null and startDate[0]!=''">
+                and a.startDate &gt; #{startDate[0]}
+            </if>
+            <if test="endDate[0]!=null and endDate[0]!=''">
+                and a.endDate &lt; #{endDate[0]}
+            </if>
+        </where>
+
     </select>
 </mapper>
