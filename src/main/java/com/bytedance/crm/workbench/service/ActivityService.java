@@ -34,4 +34,5 @@ public interface ActivityService {
 
     Map<String,Object> updateRemark(ActivityRemark activityRemark);
 
+    Map<String,Object> addRemark(ActivityRemark activityRemark);
 }

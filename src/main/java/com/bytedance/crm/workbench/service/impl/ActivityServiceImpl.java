@@ -152,5 +152,22 @@ public class ActivityServiceImpl implements ActivityService {
         return map;
     }
 
+    @Override
+    public Map<String, Object> addRemark(ActivityRemark activityRemark) {
+        boolean flag = true;
+        ActivityRemark activityRemark1 = null;
+        int num = activityRemarkDao.addRemark(activityRemark);
+        if (num <= 0) {
+            flag = false;
+        }
+        if (flag) {
+            activityRemark1 = activityRemarkDao.getRemarkById(activityRemark.getId());
+        }
+        Map<String, Object> map = new HashMap<>();
+        map.put("success", flag);
+        map.put("activityRemark", activityRemark1);
+        return map;
+    }
+
 
 }

@@ -153,7 +153,6 @@ public class ActivityController {
     }
 
 
-
     @RequestMapping("/workbench/activity/deleteRemark.do")
     @ResponseBody
     /*
@@ -162,10 +161,9 @@ public class ActivityController {
     public boolean deleteRemark(String id) {
         System.out.println("==========执行deleteRemark方法-----------------------++");
         boolean flag = activityService.deleteRemark(id);
-        System.out.println("flag::"+flag);
+        System.out.println("flag::" + flag);
         return flag;
     }
-
 
 
     @RequestMapping("/workbench/activity/updateRemark.do")
@@ -173,16 +171,32 @@ public class ActivityController {
     /*
     * 活动备注的修改
     * */
-    public Map<String,Object> updateRemark(HttpServletRequest request,ActivityRemark activityRemark) {
+    public Map<String, Object> updateRemark(HttpServletRequest request, ActivityRemark activityRemark) {
         System.out.println("==========执行updateRemark方法-----------------------++");
         activityRemark.setEditTime(DateTimeUtil.getSysTime());
         User user = (User) request.getSession().getAttribute("user");
         activityRemark.setEditBy(user.getName());
         activityRemark.setEditFlag("1");
-        System.out.println("activityRemark:::"+activityRemark);
+        System.out.println("activityRemark:::" + activityRemark);
         Map<String, Object> map = activityService.updateRemark(activityRemark);
         System.out.println("success::" + map.get("success"));
         System.out.println("activityRemark::::" + map.get("activityRemark"));
+        return map;
+    }
+
+    @RequestMapping("/workbench/activity/addRemark.do")
+    @ResponseBody
+    /*
+    * 活动备注的增加
+    * */
+    public Map<String, Object> addRemark(HttpServletRequest request, ActivityRemark activityRemark) {
+        System.out.println("==========执行addRemark方法-----------------------++");
+        activityRemark.setId(UUIDUtil.getUUID());
+        activityRemark.setCreateTime(DateTimeUtil.getSysTime());
+        activityRemark.setCreateBy(((User) request.getSession().getAttribute("user")).getName());
+        activityRemark.setEditFlag("0");
+        Map<String,Object> map = activityService.addRemark(activityRemark);
+        System.out.println("activityRemark add remark:::"+map.get("activityRemark"));
         return map;
     }
 
