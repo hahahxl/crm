@@ -3,7 +3,7 @@ package com.bytedance.crm.workbench.domain;
 /**
  * Created by hxl on 2020/8/7.
  */
-public class ActivityRemarkv {
+public class ActivityRemark {
     private String id;
     private String noteContent;   //备注信息
     private String createTime;

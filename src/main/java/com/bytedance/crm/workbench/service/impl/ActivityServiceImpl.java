@@ -1,14 +1,19 @@
 package com.bytedance.crm.workbench.service.impl;
 
+import com.bytedance.crm.setting.dao.UserDao;
 import com.bytedance.crm.setting.domain.User;
 import com.bytedance.crm.workbench.activityVo.ActivityVo;
 import com.bytedance.crm.workbench.dao.ActivityDao;
+import com.bytedance.crm.workbench.dao.ActivityRemarkDao;
 import com.bytedance.crm.workbench.domain.Activity;
+import com.bytedance.crm.workbench.domain.ActivityRemark;
 import com.bytedance.crm.workbench.service.ActivityService;
 import com.github.pagehelper.PageHelper;
+import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,6 +24,10 @@ import java.util.Map;
 public class ActivityServiceImpl implements ActivityService {
     @Autowired
     private ActivityDao activityDao = null;
+    @Autowired
+    private UserDao userDao = null;
+    @Autowired
+    private ActivityRemarkDao activityRemarkDao = null;
    /* @Override
     public Activity selectAll() {
         Activity activity = activityDao.selectAll();
@@ -28,15 +37,16 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public List<User> getUserList() {
-   //     PageHelper.startPage(2, 3);
-        List<User> users = activityDao.getUserList();
+        //     PageHelper.startPage(2, 3);
+        List<User> users = userDao.getUserList();
       /*  System.out.println("---------------------");
 
         for (User user : users) {
             System.out.println("user::::"+user);
         }
         System.out.println("----------------------------");
-       */ return users;
+       */
+        return users;
     }
 
     @Override
@@ -55,14 +65,92 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public List<Activity> getPageList(Map<String,String[]> parameterMap) {
-        List<Activity> pageList =activityDao.getPageList(parameterMap);
+    public List<Activity> getPageList(Map<String, String[]> parameterMap) {
+        List<Activity> pageList = activityDao.getPageList(parameterMap);
         return pageList;
     }
 
     @Override
-    public int getTotal(Map<String,String[]> parameterMap) {
-      int total=  activityDao.getToal(parameterMap);
+    public int getTotal(Map<String, String[]> parameterMap) {
+        int total = activityDao.getToal(parameterMap);
         return total;
     }
+
+    @Override
+    public ActivityVo delete(String[] ids) {
+        boolean flag = true;
+        int num = activityDao.delete(ids);
+        if (num < 0) {
+            flag = false;
+        }
+        if (ids.length != num) {
+            flag = false;
+        }
+        ActivityVo activityVo = new ActivityVo();
+        activityVo.setSuccess(flag);
+        return activityVo;
+    }
+
+    @Override
+    public Map<String, Object> getUserListAndActivity(String id) {
+        List<User> userList = userDao.getUserList();
+        Activity activity = activityDao.getActivityById(id);
+        Map<String, Object> userListAndActivity = new HashMap<>();
+        userListAndActivity.put("userList", userList);
+        userListAndActivity.put("activity", activity);
+        return userListAndActivity;
+    }
+
+    @Override
+    public ActivityVo update(Activity activity) {
+        int num = activityDao.update(activity);
+        boolean flag = true;
+        if (num <= 0) {
+            flag = false;
+        }
+        ActivityVo activityVo = new ActivityVo();
+        activityVo.setSuccess(flag);
+        return activityVo;
+    }
+
+    @Override
+    public Activity detail(String id) {
+        Activity activity = activityDao.detail(id);
+        return activity;
+    }
+
+    @Override
+    public List<ActivityRemark> getRemarkListByAid(String id) {
+        List<ActivityRemark> activityRemark = activityRemarkDao.getRemarkListByAid(id);
+        return activityRemark;
+    }
+
+    @Override
+    public boolean deleteRemark(String id) {
+        boolean flag = true;
+        int num = activityRemarkDao.deleteRemark(id);
+        if (num <= 0) {
+            flag = false;
+        }
+        return flag;
+    }
+
+    @Override
+    public Map<String,Object> updateRemark(ActivityRemark activityRemark) {
+        Map<String, Object> map = new HashMap<>();
+        ActivityRemark activityRemark2 = null;
+        boolean flag = true;
+        int num = activityRemarkDao.updateRemark(activityRemark);
+        if (num <= 0) {
+            flag = false;
+        }
+        if (flag) {
+         activityRemark2= activityRemarkDao.getRemarkById(activityRemark.getId());
+        }
+        map.put("success", flag);
+        map.put("activityRemark", activityRemark2);
+        return map;
+    }
+
+
 }
