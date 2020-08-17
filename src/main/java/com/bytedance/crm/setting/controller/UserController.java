@@ -21,7 +21,7 @@ public class UserController {
     private UserService userService = null;
 
     @RequestMapping(value = "/user/setting/login.do")
-     @ResponseBody
+    @ResponseBody
     public LoginInfo login(HttpServletRequest request, User user) throws LoginException {
         String loginPwd = MD5Util.getMD5(user.getLoginPwd());
         User login = userService.login(user.getLoginAct(), loginPwd);

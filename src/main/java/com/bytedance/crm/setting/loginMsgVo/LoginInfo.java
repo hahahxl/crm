@@ -4,7 +4,7 @@ package com.bytedance.crm.setting.loginMsgVo;
  * Created by hxl on 2020/8/6.
  */
 public class LoginInfo {
-   private Boolean success;
+    private Boolean success;
     private String msg;
 
     public Boolean getSuccess() {

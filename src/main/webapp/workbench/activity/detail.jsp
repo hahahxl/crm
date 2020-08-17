@@ -99,17 +99,17 @@
                     success: function (data) {
                         var html = "";
                         if (data.success) {
-                            html += '<div id="' +data.activityRemark.id + '" class="remarkDiv" style="height: 60px;">';
+                            html += '<div id="' + data.activityRemark.id + '" class="remarkDiv" style="height: 60px;">';
                             html += '<img title="zhangsan" src="../../image/user-thumbnail.png" style="width: 30px; height:30px;">';
                             html += '<div style="position: relative; top: -40px; left: 40px;">';
                             html += '<h5 id="e' + data.activityRemark.id + '" >' + data.activityRemark.noteContent + '</h5>';
                             html += '<font color="gray">市场活动</font> <font color="gray">-</font> <b>${activity.name}</b>';
-                            html += '<small style="color: gray;" id="s' + data.activityRemark.id + '">' + (data.activityRemark.createTime) + '由' + (data.activityRemark.createBy)+ '</small>';
+                            html += '<small style="color: gray;" id="s' + data.activityRemark.id + '">' + (data.activityRemark.createTime) + '由' + (data.activityRemark.createBy) + '</small>';
                             html += '<div style="position: relative; left: 500px; top: -30px; height: 30px; width: 100px; display: none;">';
                             html += '<a class="myHref" href="javascript:void(0);" onclick="editRemark(\'' + data.activityRemark.id + '\')"><span class="glyphicon glyphicon-edit"';
                             html += 'style="font-size: 20px; color: #FF0000;"></span></a>';
                             html += '&nbsp;&nbsp;&nbsp;&nbsp;';
-                            html += '<a class="myHref" href="javascript:void(0);" onclick="deleteRemark(\'' + data.activityRemark.id  + '\')"><span class="glyphicon glyphicon-remove"';
+                            html += '<a class="myHref" href="javascript:void(0);" onclick="deleteRemark(\'' + data.activityRemark.id + '\')"><span class="glyphicon glyphicon-remove"';
                             html += 'style="font-size: 20px; color: #FF0000;"></span></a>';
                             html += '</div>';
                             html += '</div>';

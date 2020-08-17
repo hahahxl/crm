@@ -195,8 +195,8 @@ public class ActivityController {
         activityRemark.setCreateTime(DateTimeUtil.getSysTime());
         activityRemark.setCreateBy(((User) request.getSession().getAttribute("user")).getName());
         activityRemark.setEditFlag("0");
-        Map<String,Object> map = activityService.addRemark(activityRemark);
-        System.out.println("activityRemark add remark:::"+map.get("activityRemark"));
+        Map<String, Object> map = activityService.addRemark(activityRemark);
+        System.out.println("activityRemark add remark:::" + map.get("activityRemark"));
         return map;
     }
 

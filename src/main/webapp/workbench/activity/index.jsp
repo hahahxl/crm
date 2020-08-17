@@ -221,7 +221,14 @@
 
             });
         });
-
+        /**
+         * 市场活动的条件查询
+         */
+        $(function () {
+            $("#seachBtn").click(function () {
+                pageList(1, $("#activityPage").bs_pagination('getOption', 'rowsPerPage'));
+            });
+        });
         /**
          * pageList方法
          * */
@@ -246,7 +253,7 @@
                         // alert("id值" + n.id+"n的owner"+n.owner);
                         html += '<tr class="active">';
                         html += '<td><input name="xz" value="' + n.id + '" type="checkbox"/></td>';
-                        html += '<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href=\'${pageContext.request.contextPath}/workbench/activity/detail.do?id='+n.id+'\';">' + n.name + '</a>';
+                        html += '<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href=\'${pageContext.request.contextPath}/workbench/activity/detail.do?id=' + n.id + '\';">' + n.name + '</a>';
                         html += '</td>';
                         html += '<td>' + n.owner + '</td>';
                         html += '<td>' + n.startDate + '</td>';
@@ -458,7 +465,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-default">查询</button>
+                <button type="button" class="btn btn-default" id="seachBtn">查询</button>
 
             </form>
         </div>

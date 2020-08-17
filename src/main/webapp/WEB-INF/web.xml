@@ -4,20 +4,8 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <!--注册中央调度器 -->
-    <servlet>
-        <servlet-name>myweb</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <init-param>
-            <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:dispatcherServlet.xml</param-value>
-        </init-param>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>myweb</servlet-name>
-        <url-pattern>*.do</url-pattern>
-    </servlet-mapping>
+
+
 
 
     <!--注册spring容器-->
@@ -61,4 +49,27 @@
         <url-pattern>*.do</url-pattern>
         <url-pattern>*.jsp</url-pattern>
     </filter-mapping>
+
+
+    <!--监听上下文域对象-->
+    <listener>
+        <listener-class>com.bytedance.crm.workbench.web.listener.SysInitListener</listener-class>
+    </listener>
+    <!--注册中央调度器 -->
+    <servlet>
+        <servlet-name>myweb</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:dispatcherServlet.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>myweb</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+
+
+
 </web-app>

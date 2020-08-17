@@ -24,28 +24,27 @@ public class LoginFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
         String path = request.getServletPath();
-        System.out.println("path::"+path);
+        System.out.println("path::" + path);
         //不应该被拦截的资源，自动放行请求
-        System.out.println("\"/login.jsp\".equals(path)"+("/login.jsp".equals(path)));
-        System.out.println("\"/setting/user/login.do\".equals(path)"+("/user/setting/login.do".equals(path)));
-        if("/login.jsp".equals(path) || "/user/setting/login.do".equals(path)){
+        System.out.println("\"/login.jsp\".equals(path)" + ("/login.jsp".equals(path)));
+        System.out.println("\"/setting/user/login.do\".equals(path)" + ("/user/setting/login.do".equals(path)));
+        if ("/login.jsp".equals(path) || "/user/setting/login.do".equals(path)) {
             chain.doFilter(req, resp);
             //其他资源必须验证有没有登录过
-        }else{
+        } else {
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
             //如果user不为null，说明登录过
-            if(user!=null){
+            if (user != null) {
                 chain.doFilter(req, resp);
                 //没有登录过
-            }else{
+            } else {
                 response.sendRedirect(request.getContextPath() + "/login.jsp");
 
             }
 
 
         }
-
 
 
     }

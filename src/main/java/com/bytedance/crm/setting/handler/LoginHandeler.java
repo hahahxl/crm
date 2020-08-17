@@ -15,9 +15,9 @@ public class LoginHandeler implements HandlerInterceptor {
         System.out.println("执行过滤器");
 
         String uri = request.getRequestURI();
-        System.out.println("uri::"+uri);
-        System.out.println("uri.indexOf(\"/login.do\")::::"+uri.indexOf("/login.do"));
-        System.out.println(" uri.indexOf(\"/login.jsp\")::::"+ uri.indexOf("/login.jsp"));
+        System.out.println("uri::" + uri);
+        System.out.println("uri.indexOf(\"/login.do\")::::" + uri.indexOf("/login.do"));
+        System.out.println(" uri.indexOf(\"/login.jsp\")::::" + uri.indexOf("/login.jsp"));
         if (uri.indexOf("/login.do") >= 0 || uri.indexOf("/login.jsp") >= 0) {
             return true;
         }

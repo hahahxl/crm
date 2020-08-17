@@ -136,7 +136,7 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public Map<String,Object> updateRemark(ActivityRemark activityRemark) {
+    public Map<String, Object> updateRemark(ActivityRemark activityRemark) {
         Map<String, Object> map = new HashMap<>();
         ActivityRemark activityRemark2 = null;
         boolean flag = true;
@@ -145,7 +145,7 @@ public class ActivityServiceImpl implements ActivityService {
             flag = false;
         }
         if (flag) {
-         activityRemark2= activityRemarkDao.getRemarkById(activityRemark.getId());
+            activityRemark2 = activityRemarkDao.getRemarkById(activityRemark.getId());
         }
         map.put("success", flag);
         map.put("activityRemark", activityRemark2);

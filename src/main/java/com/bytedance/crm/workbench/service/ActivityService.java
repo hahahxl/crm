@@ -32,7 +32,7 @@ public interface ActivityService {
 
     boolean deleteRemark(String id);
 
-    Map<String,Object> updateRemark(ActivityRemark activityRemark);
+    Map<String, Object> updateRemark(ActivityRemark activityRemark);
 
-    Map<String,Object> addRemark(ActivityRemark activityRemark);
+    Map<String, Object> addRemark(ActivityRemark activityRemark);
 }
