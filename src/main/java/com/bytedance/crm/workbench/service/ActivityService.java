@@ -35,4 +35,12 @@ public interface ActivityService {
     Map<String, Object> updateRemark(ActivityRemark activityRemark);
 
     Map<String, Object> addRemark(ActivityRemark activityRemark);
+
+    List<Activity> getActivityListByClueId(String clueId);
+
+    List<Activity> getActivityListByBund(String clueId, String name);
+
+    List<Activity> getActivityListByConvent(String name);
+
+
 }

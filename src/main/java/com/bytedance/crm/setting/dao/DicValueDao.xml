@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bytedance.crm.setting.dao.DicValueDao">
     <select id="getDicValue" resultType="com.bytedance.crm.setting.domain.DicValue">
-    select * from tbl_dic_value where typeCode  =#{dicTypeCode};
+        select * from tbl_dic_value where typeCode =#{dicTypeCode} order by orderNo
+
     </select>
 </mapper>

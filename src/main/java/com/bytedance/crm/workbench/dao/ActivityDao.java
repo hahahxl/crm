@@ -2,6 +2,7 @@ package com.bytedance.crm.workbench.dao;
 
 import com.bytedance.crm.setting.domain.User;
 import com.bytedance.crm.workbench.domain.Activity;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -23,4 +24,10 @@ public interface ActivityDao {
     int update(Activity activity);
 
     Activity detail(String id);
+
+    List<Activity> getActivityListByClueId(String clueId);
+
+    List<Activity> getActivityListByBund(String clueId, String name);
+
+    List<Activity> getActivityListByConvent(@Param(value = "name") String name);
 }

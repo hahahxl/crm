@@ -49,7 +49,7 @@
                     }
                 });
                 /*设置下拉框自动填充当前登录用户*/
-                var id = "${user.id}"
+                var id = "${user.id}";
                 $("#create-marketActivityOwner").val(id);
                 $("#createActivityModal").modal("show");
             });
@@ -226,7 +226,7 @@
          */
         $(function () {
             $("#seachBtn").click(function () {
-                pageList(1, $("#activityPage").bs_pagination('getOption', 'rowsPerPage'));
+                pageList(1, 1);
             });
         });
         /**
@@ -508,7 +508,7 @@
 
         <div style="height: 50px; position: relative;top: 30px;">
             <div id="activityPage"></div>
-            <div id="ssss"></div>
+
         </div>
 
     </div>

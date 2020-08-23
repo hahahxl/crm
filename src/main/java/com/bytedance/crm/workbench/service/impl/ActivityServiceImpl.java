@@ -8,8 +8,6 @@ import com.bytedance.crm.workbench.dao.ActivityRemarkDao;
 import com.bytedance.crm.workbench.domain.Activity;
 import com.bytedance.crm.workbench.domain.ActivityRemark;
 import com.bytedance.crm.workbench.service.ActivityService;
-import com.github.pagehelper.PageHelper;
-import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -167,6 +165,24 @@ public class ActivityServiceImpl implements ActivityService {
         map.put("success", flag);
         map.put("activityRemark", activityRemark1);
         return map;
+    }
+
+    @Override
+    public List<Activity> getActivityListByClueId(String clueId) {
+        List<Activity> activities = activityDao.getActivityListByClueId(clueId);
+        return activities;
+    }
+
+    @Override
+    public List<Activity> getActivityListByBund(String clueId, String name) {
+        List<Activity> activities = activityDao.getActivityListByBund(clueId, name);
+        return activities;
+    }
+
+    @Override
+    public List<Activity> getActivityListByConvent(String name) {
+        List<Activity> activities = activityDao.getActivityListByConvent(name);
+        return activities;
     }
 
 

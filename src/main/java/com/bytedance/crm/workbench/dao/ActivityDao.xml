@@ -94,4 +94,57 @@
     from tbl_activity a join tbl_user u
     on u.id = a.owner and a.id = #{id}
     </select>
+
+
+    <select id="getActivityListByClueId" resultType="com.bytedance.crm.workbench.domain.Activity">
+    select
+    car.id as id,
+    u.name as owner,
+    a.name,
+    a.startDate,
+    a.endDate
+
+
+    from tbl_activity a JOIN tbl_user u on u.id = a.owner
+    JOIN tbl_clue_activity_relation car on car.activityId = a.id
+    where car.clueId  =#{clueId}
+    </select>
+
+
+    <select id="getActivityListByBund" resultType="com.bytedance.crm.workbench.domain.Activity">
+        select
+
+        a.id,
+        a.name,
+        a.startDate,
+        a.endDate,
+        u.name as owner
+        from tbl_activity a
+        join tbl_user u
+        on a.owner=u.id
+        <where>
+            <if test="param2!=null and param2!=''">
+                a.name like '%' #{param2} '%'
+            </if>
+            <if test="param1!= null and param1!=''">
+                and a.id not in(
+                select
+                activityId
+                from tbl_clue_activity_relation
+                where clueId=#{param1}
+                )
+            </if>
+        </where>
+    </select>
+
+
+    <select id="getActivityListByConvent" resultType="com.bytedance.crm.workbench.domain.Activity">
+        select * from tbl_activity
+        <where>
+            <if test="name!=null and name!=''">
+                name like '%' #{name} '%';
+            </if>
+        </where>
+
+    </select>
 </mapper>

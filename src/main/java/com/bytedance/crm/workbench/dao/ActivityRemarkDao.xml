@@ -4,28 +4,30 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bytedance.crm.workbench.dao.ActivityRemarkDao">
     <select id="getRemarkListByAid" resultType="com.bytedance.crm.workbench.domain.ActivityRemark">
-  select
-  r.*
-  from tbl_activity_remark r join tbl_activity a
-  on r.activityId = a.id and a.id=#{id}
+        select
+        r.*
+        from tbl_activity_remark r join tbl_activity a
+        on r.activityId = a.id and a.id=#{id}
     </select>
 
     <delete id="deleteRemark">
-    delete
-    from tbl_activity_remark
-    where id=#{id}
-  </delete>
+        delete
+        from tbl_activity_remark
+        where id=#{id}
+    </delete>
 
 
     <update id="updateRemark">
-  update tbl_activity_remark set noteContent = #{noteContent},editTime=#{editTime},editBy=#{editBy},editFlag=1  where id=#{id};
-  </update>
+        update tbl_activity_remark set noteContent = #{noteContent},editTime=#{editTime},editBy=#{editBy},editFlag=1
+        where id=#{id};
+    </update>
 
     <select id="getRemarkById" resultType="com.bytedance.crm.workbench.domain.ActivityRemark">
-  select * from tbl_activity_remark where id = #{id};
-  </select>
+        select * from tbl_activity_remark where id = #{id};
+    </select>
 
     <insert id="addRemark">
-      insert into tbl_activity_remark (id, noteContent, createTime, createBy,editFlag, activityId) values (#{id},#{noteContent},#{createTime},#{createBy},#{editFlag},#{activityId});
-</insert>
+        insert into tbl_activity_remark (id, noteContent, createTime, createBy,editFlag, activityId) values
+        (#{id},#{noteContent},#{createTime},#{createBy},#{editFlag},#{activityId});
+    </insert>
 </mapper>

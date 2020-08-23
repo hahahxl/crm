@@ -17,10 +17,11 @@ import java.util.Map;
  */
 //@Service
 public class DicServiceImpl implements DicService {
-//    @Autowired
+    //    @Autowired
     private DicTypeDao dicTypeDao = null;
     //  @Autowired
     private DicValueDao dicValueDao = null;
+
     public void setDicTypeDao(DicTypeDao dicTypeDao) {
         this.dicTypeDao = dicTypeDao;
     }
@@ -30,7 +31,6 @@ public class DicServiceImpl implements DicService {
     }
 
 
-
     @Override
     public Map<String, List<DicValue>> getAllDic() {
         Map<String, List<DicValue>> map = new HashMap<>();
@@ -38,7 +38,7 @@ public class DicServiceImpl implements DicService {
         for (DicType dicType : dicTypes) {
             String dicTypeCode = dicType.getCode();
             List<DicValue> dicValues = dicValueDao.getDicValue(dicTypeCode);
-            map.put(dicTypeCode,dicValues);
+            map.put(dicTypeCode, dicValues);
         }
         return map;
     }
