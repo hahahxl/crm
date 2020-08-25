@@ -1,6 +1,7 @@
 package com.bytedance.crm.workbench.service;
 
 import com.bytedance.crm.workbench.domain.Clue;
+import com.bytedance.crm.workbench.domain.Tran;
 
 import java.util.Map;
 
@@ -17,4 +18,6 @@ public interface ClueService {
     boolean unbund(String id);
 
     boolean bund(String clueId, String[] aids);
+
+    boolean convert(String clueId, Tran tran, String createBy);
 }

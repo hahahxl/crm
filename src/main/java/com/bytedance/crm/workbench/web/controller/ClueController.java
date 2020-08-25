@@ -5,15 +5,12 @@ import com.bytedance.crm.setting.servive.DicService;
 import com.bytedance.crm.setting.servive.impl.UserService;
 import com.bytedance.crm.utils.DateTimeUtil;
 import com.bytedance.crm.utils.UUIDUtil;
-import com.bytedance.crm.workbench.activityVo.ActivityVo;
-import com.bytedance.crm.workbench.activityVo.PageListVo;
 import com.bytedance.crm.workbench.domain.Activity;
-import com.bytedance.crm.workbench.domain.ActivityRemark;
 import com.bytedance.crm.workbench.domain.Clue;
+import com.bytedance.crm.workbench.domain.Tran;
 import com.bytedance.crm.workbench.service.ActivityService;
 import com.bytedance.crm.workbench.service.ClueService;
 import com.github.pagehelper.PageHelper;
-import org.omg.PortableInterceptor.ACTIVE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -41,6 +37,7 @@ public class ClueController {
     private ClueService clueService = null;
     @Autowired
     private ActivityService activityService = null;
+
 
     @RequestMapping("/workbench/clue/getUserList.do")
     @ResponseBody
@@ -167,5 +164,30 @@ public class ClueController {
         List<Activity> activities = activityService.getActivityListByConvent(name);
 
         return activities;
+    }
+
+
+    @RequestMapping("/workbench/clue/convert.do")
+    @ResponseBody
+    /**
+     * convent查询活动列表
+     */
+    public ModelAndView convert(HttpServletRequest request, Tran tran) {
+        System.out.println("----------执行convent功能的tranAndChange方法--------++");
+        ModelAndView mav = new ModelAndView();
+        String clueId = request.getParameter("clueId");
+        String flag = request.getParameter("flag");
+
+        String createBy = ((User) request.getSession().getAttribute("user")).getName();
+        // System.out.println("项目路劲：：" + request.getContextPath());
+        if (!"true".equals(flag)) {
+            /*说明有需要创建交易*/
+            tran = null;
+        }
+        boolean flag1 = clueService.convert(clueId, tran, createBy);
+        if (flag1) {
+            mav.setViewName("redirect:/workbench/clue/index.jsp");
+        }
+        return mav;
     }
 }

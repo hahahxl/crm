@@ -139,7 +139,13 @@
 
 
     <select id="getActivityListByConvent" resultType="com.bytedance.crm.workbench.domain.Activity">
-        select * from tbl_activity
+        select
+        a.name,
+        a.startDate,
+        a.endDate,
+        u.name as owner
+        from tbl_activity a JOIN tbl_user u
+        on u.id=a.owner
         <where>
             <if test="name!=null and name!=''">
                 name like '%' #{name} '%';

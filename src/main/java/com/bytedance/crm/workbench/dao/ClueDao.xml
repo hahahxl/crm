@@ -120,6 +120,11 @@
         c.address
         from tbl_clue c join tbl_user u on c.owner = u.id and c.id = #{id}
     </select>
+
+
+    <delete id="delete">
+    DELETE FROM tbl_clue where id=#{clueId}
+    </delete>
 </mapper>
 
 

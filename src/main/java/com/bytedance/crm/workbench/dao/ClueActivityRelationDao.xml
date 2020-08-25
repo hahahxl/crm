@@ -9,8 +9,15 @@
     </delete>
 
     <insert id="bund">
-        insert into tbl_clue_activity_relation (id, clueId, activityId) values (#{param1},#{param2},#{param3});
+        insert into tbl_clue_activity_relation (id, clueId, activityId) values (#{param1},#{param2},#{param3})
     </insert>
+    <select id="getListByClueId" resultType="com.bytedance.crm.workbench.domain.ClueActivityRelation">
+    select * from tbl_clue_activity_relation where clueId=#{clueId}
+    </select>
+
+    <delete id="delete">
+    DELETE FROM tbl_clue_activity_relation WHERE id=#{id}
+    </delete>
 </mapper>
 
 

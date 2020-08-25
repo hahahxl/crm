@@ -23,11 +23,11 @@
     </update>
 
     <select id="getRemarkById" resultType="com.bytedance.crm.workbench.domain.ActivityRemark">
-        select * from tbl_activity_remark where id = #{id};
+        select * from tbl_activity_remark where id = #{id}
     </select>
 
     <insert id="addRemark">
         insert into tbl_activity_remark (id, noteContent, createTime, createBy,editFlag, activityId) values
-        (#{id},#{noteContent},#{createTime},#{createBy},#{editFlag},#{activityId});
+        (#{id},#{noteContent},#{createTime},#{createBy},#{editFlag},#{activityId})
     </insert>
 </mapper>

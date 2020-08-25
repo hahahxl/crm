@@ -50,6 +50,14 @@
                 $("#activityId").val(id);
                 $("#searchActivityModal").modal("hide");
             });
+            $("#change").click(function () {
+                var prop = $("#isCreateTransaction").prop("checked");
+                if (prop) {
+                    $("#tranForm").submit();
+                } else {
+                    window.location.href = "${pageContext.request.contextPath}/workbench/clue/convert.do?clueId=${param.clueId}"
+                }
+            });
         });
         function showActivityListByConvent() {
             $.ajax({
@@ -158,22 +166,24 @@
 <div id="create-transaction2"
      style="position: relative; left: 40px; top: 20px; width: 80%; background-color: #F7F7F7; display: none;">
 
-    <form>
+    <form id="tranForm" action="${pageContext.request.contextPath}/workbench/clue/convert.do">
+        <input name="flag" type="hidden" value="true">
+        <input name="clueId" type="hidden" value="${param.clueId}">
         <div class="form-group" style="width: 400px; position: relative; left: 20px;">
             <label for="amountOfMoney">金额</label>
-            <input type="text" class="form-control" id="amountOfMoney">
+            <input type="text" class="form-control" name="money" id="amountOfMoney">
         </div>
         <div class="form-group" style="width: 400px;position: relative; left: 20px;">
             <label for="tradeName">交易名称</label>
-            <input type="text" class="form-control" id="tradeName" value="动力节点-">
+            <input type="text" class="form-control" name="name" id="tradeName" value="动力节点-">
         </div>
         <div class="form-group" style="width: 400px;position: relative; left: 20px;">
             <label for="expectedClosingDate">预计成交日期123</label>
-            <input type="text" class="form-control time" id="expectedClosingDate">
+            <input type="text" class="form-control time" name="expectedDate" id="expectedClosingDate">
         </div>
         <div class="form-group" style="width: 400px;position: relative; left: 20px;">
             <label for="stage">阶段</label>
-            <select id="stage" class="form-control">
+            <select id="stage" class="form-control" name="stage">
                 <c:forEach items="${stage}" var="a">
                     <option id="${a.value}">${a.text}</option>
                 </c:forEach>
@@ -186,7 +196,7 @@
                     class="glyphicon glyphicon-search"></span></a></label>
             <input type="text" class="form-control" id="activity" placeholder="点击上面搜索" readonly>
         </div>
-        <input type="hidden" id="activityId">
+        <input type="hidden" name="source" id="activityId">
 
     </form>
 
@@ -197,7 +207,7 @@
     <b>${param.owner}</b>
 </div>
 <div id="operation" style="position: relative; left: 40px; height: 35px; top: 100px;">
-    <input class="btn btn-primary" type="button" value="转换">
+    <input class="btn btn-primary" type="button" id="change" value="转换">
     &nbsp;&nbsp;&nbsp;&nbsp;
     <input class="btn btn-default" type="button" value="取消">
 </div>
