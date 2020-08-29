@@ -184,7 +184,7 @@ public class ClueServiceImpl implements ClueService {
             }
         }
         /*(5) “线索和市场活动”的关系转换到“联系人和市场活动”的关系*/
-        List<ClueActivityRelation> clueActivityRelations  = clueActivityRelationDao.getListByClueId(clueId);
+        List<ClueActivityRelation> clueActivityRelations = clueActivityRelationDao.getListByClueId(clueId);
         for (ClueActivityRelation clueActivityRelation : clueActivityRelations) {
             ContactsActivityRelation contactsActivityRelation = new ContactsActivityRelation();
             String activityId = clueActivityRelation.getActivityId();

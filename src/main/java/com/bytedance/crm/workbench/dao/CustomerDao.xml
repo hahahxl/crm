@@ -5,12 +5,23 @@
 
 <mapper namespace="com.bytedance.crm.workbench.dao.CustomerDao">
     <select id="getCustomerByCompany" resultType="com.bytedance.crm.workbench.domain.Customer">
-     select * from tbl_customer where name = #{company} ;
+        select * from tbl_customer where name = #{company} ;
     </select>
 
     <insert id="save">
-    insert into tbl_customer (id, owner, name, website, phone, createBy, createTime,contactSummary, nextContactTime, description, address) values (#{id},#{owner},#{name},#{website},#{phone},#{createBy},#{createTime},#{contactSummary},#{nextContactTime},#{description},#{address})
+        insert into tbl_customer (id, owner, name, website, phone, createBy, createTime,contactSummary, nextContactTime,
+        description, address) values
+        (#{id},#{owner},#{name},#{website},#{phone},#{createBy},#{createTime},#{contactSummary},#{nextContactTime},#{description},#{address})
     </insert>
+
+    <select id="getCustomerName" resultType="com.bytedance.crm.workbench.domain.Customer">
+        select * from tbl_customer where name LIKE "%" #{name} "%"
+    </select>
+
+
+    <select id="getIdByName" resultType="string">
+        select id from tbl_customer where name=#{customerName}
+    </select>
 </mapper>
 
 

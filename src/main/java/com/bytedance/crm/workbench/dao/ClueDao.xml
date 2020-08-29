@@ -123,7 +123,7 @@
 
 
     <delete id="delete">
-    DELETE FROM tbl_clue where id=#{clueId}
+        DELETE FROM tbl_clue where id=#{clueId}
     </delete>
 </mapper>
 

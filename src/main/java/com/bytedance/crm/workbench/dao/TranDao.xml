@@ -5,9 +5,41 @@
 
 <mapper namespace="com.bytedance.crm.workbench.dao.TranDao">
     <insert id="save">
-insert into tbl_tran (id, owner, money, name, expectedDate, customerId, stage, type, source, activityId, contactsId, createBy, createTime, description, contactSummary, nextContactTime)
-values (#{id},#{owner},#{money},#{name},#{expectedDate},#{customerId},#{stage},#{type},#{source},#{activityId},#{contactsId},#{createBy},#{createTime},#{description},#{contactSummary},#{nextContactTime})
+        insert into tbl_tran (id, owner, money, name, expectedDate, customerId, stage, type, source, activityId,
+        contactsId, createBy, createTime, description, contactSummary, nextContactTime)
+        values
+        (#{id},#{owner},#{money},#{name},#{expectedDate},#{customerId},#{stage},#{type},#{source},#{activityId},#{contactsId},#{createBy},#{createTime},#{description},#{contactSummary},#{nextContactTime})
     </insert>
+
+    <select id="detail" resultType="com.bytedance.crm.workbench.domain.Tran">
+        select
+        tran.id,
+        u.name as owner,
+        tran.money,
+        tran.name,
+        tran.expectedDate,
+        cus.name as customerId,
+        tran.stage,
+        tran.type,
+        tran.source,
+        activity.name as activityId,
+        contact.fullname as contactsId,
+        tran.createBy,
+        tran.createTime,
+        tran.editBy,
+        tran.editTime,
+        tran.description,
+        tran.contactSummary,
+        tran.nextContactTime
+        from tbl_tran tran join tbl_user u on u.id=tran.owner
+        join tbl_customer cus on tran.customerId=cus.id
+        join tbl_contacts contact on contact.id=tran.contactsId
+        join tbl_activity activity on activity.id = tran.activityId
+    </select>
+
+    <update id="changeStage">
+    update tbl_tran set stage = #{stage}  where id  =#{id}
+    </update>
 </mapper>
 
 

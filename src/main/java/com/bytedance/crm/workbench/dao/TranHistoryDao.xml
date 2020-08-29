@@ -6,8 +6,17 @@
 <mapper namespace="com.bytedance.crm.workbench.dao.TranHistoryDao">
 
     <insert id="save">
-    insert into tbl_tran_history (id, stage, money, expectedDate, createTime, createBy, tranId)
-    values (#{id},#{stage},#{money},#{expectedDate},#{createTime},#{createBy},#{tranId});
+        insert into tbl_tran_history (id, stage, money, expectedDate, createTime, createBy, tranId)
+        values (#{id},#{stage},#{money},#{expectedDate},#{createTime},#{createBy},#{tranId});
+    </insert>
+
+
+    <select id="getTranHistoryList" resultType="com.bytedance.crm.workbench.domain.TranHistory">
+        select * from tbl_tran_history where tranId=#{tranId} order by createTime desc
+    </select>
+
+    <insert id="insert">
+   insert into tbl_tran_history (id, stage, money, expectedDate, createTime, createBy, tranId) values (#{tranHistoryId},#{tran.stage},#{tran.money},#{tran.expectedDate},#{tran.createTime},#{tran.createBy},#{tran.id});
     </insert>
 </mapper>
 

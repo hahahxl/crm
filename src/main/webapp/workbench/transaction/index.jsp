@@ -131,7 +131,8 @@
         <div class="btn-toolbar" role="toolbar"
              style="background-color: #F7F7F7; height: 50px; position: relative;top: 10px;">
             <div class="btn-group" style="position: relative; top: 18%;">
-                <button type="button" class="btn btn-primary" onclick="window.location.href='save.jsp';"><span
+                <button type="button" class="btn btn-primary"
+                        onclick="window.location.href='${pageContext.request.contextPath}/workbench/transaction/getUserList.do';"><span
                         class="glyphicon glyphicon-plus"></span> 创建
                 </button>
                 <button type="button" class="btn btn-default" onclick="window.location.href='edit.jsp';"><span
@@ -160,25 +161,26 @@
                 <tr>
                     <td><input type="checkbox"/></td>
                     <td><a style="text-decoration: none; cursor: pointer;"
-                           onclick="window.location.href='detail.jsp';">动力节点-交易01</a></td>
-                    <td>动力节点</td>
-                    <td>谈判/复审</td>
+                           onclick="window.location.href='${pageContext.request.contextPath}/workbench/transaction/detail.do?tranId=ede72804f38041f3be841156dd02488f';">腾讯-腾讯交易1</a>
+                    </td>
+                    <td>腾讯</td>
+                    <td>07成交</td>
                     <td>新业务</td>
-                    <td>zhangsan</td>
-                    <td>广告</td>
                     <td>李四</td>
-                </tr>
-                <tr class="active">
-                    <td><input type="checkbox"/></td>
-                    <td><a style="text-decoration: none; cursor: pointer;"
-                           onclick="window.location.href='detail.jsp';">动力节点-交易01</a></td>
-                    <td>动力节点</td>
-                    <td>谈判/复审</td>
-                    <td>新业务</td>
-                    <td>zhangsan</td>
                     <td>广告</td>
-                    <td>李四</td>
+                    <td>的化腾先生</td>
                 </tr>
+                <%-- <tr class="active">
+                     <td><input type="checkbox"/></td>
+                     <td><a style="text-decoration: none; cursor: pointer;"
+                            onclick="window.location.href='detail.jsp';">动力节点-交易01</a></td>
+                     <td>动力节点</td>
+                     <td>谈判/复审</td>
+                     <td>新业务</td>
+                     <td>zhangsan</td>
+                     <td>广告</td>
+                     <td>李四</td>
+                 </tr>--%>
                 </tbody>
             </table>
         </div>
